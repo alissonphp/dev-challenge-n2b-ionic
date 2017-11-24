@@ -1,13 +1,18 @@
 <ion-header>
-    <ion-navbar>
-        <ion-title>
-            N2B - Dev Challeng - ToDo List
-        </ion-title>
-    </ion-navbar>
+  <ion-navbar>
+    <ion-title class="results" *ngIf="tpmTodos.length > 0 else notFoundBlock"> Items found: {{ tpmTodos.length }}</ion-title>
+    <ng-template #notFoundBlock>
+      <ion-title class="results"> No items found :(</ion-title>
+    </ng-template>
+    <ion-searchbar animated="true" placeholder="Search by User ID eg: 6" [(ngModel)]="searchTerm" [formControl]="searchControl"
+      (ionInput)="onSearchInput()"></ion-searchbar>
+  </ion-navbar>
 </ion-header>
 
 <ion-content padding *ngIf="todos">
-    <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
-    <app-list-card *ngFor="let t of todos" [userid]="t.userId" [todo]="t.title" [completed]="t.completed">
-    </app-list-card>
+  <div *ngIf="searching" class="spinner-container">
+    <ion-spinner></ion-spinner>
+  </div>
+  <app-list-card *ngFor="let t of tpmTodos" [userid]="t.userId" [todo]="t.title" [completed]="t.completed">
+  </app-list-card>
 </ion-content>

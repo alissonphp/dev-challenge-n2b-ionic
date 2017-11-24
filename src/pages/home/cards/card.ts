@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-    selector: 'app-list-card',
-    template: `
+  selector: 'app-list-card',
+  template: `
     <ion-card>
         <ion-item>
             <ion-avatar item-start>
@@ -18,25 +18,25 @@ import { Component, Input } from '@angular/core';
         </ion-card-content>
     </ion-card>
  `,
-    styles: ['.text-success { color: #27ae60; }']
+  styles: ['.text-success { color: #27ae60; }']
 })
 export class ListCardComponent {
 
-    @Input() userid: number
-    @Input() todo: string
-    @Input() completed: boolean
+  @Input() userid: number
+  @Input() todo: string
+  @Input() completed: boolean
 
-    initAvatar: number = 10330
+  initAvatar: number = 10330
 
-    getAvatarImg(id: number) {
-        return "https://jira.lineageos.org/secure/useravatar?size=small&avatarId=" + (this.initAvatar + id)
+  getAvatarImg(id: number) {
+    return "https://jira.lineageos.org/secure/useravatar?size=small&avatarId=" + (this.initAvatar + id)
+  }
+
+  checkComplete(completed: boolean) {
+    if (completed) {
+      return 'line-through'
     }
-
-    checkComplete(completed: boolean) {
-        if (completed) {
-            return 'line-through'
-        }
-        return 'none'
-    }
+    return 'none'
+  }
 
 }
