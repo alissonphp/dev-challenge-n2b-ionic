@@ -13,7 +13,7 @@ export class HomePage implements OnInit {
 
   errorMsg: any
 
-  constructor(public navCtrl: NavController, private apiService: ApiService) {}
+  constructor(public navCtrl: NavController, private apiService: ApiService) { }
 
   ngOnInit() {
     this.getTodoList()

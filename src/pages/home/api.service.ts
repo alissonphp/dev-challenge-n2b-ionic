@@ -10,12 +10,12 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class ApiService {
 
-  constructor(private http: Http) { }
+    constructor(private http: Http) { }
 
-  list(): Observable<any> {
-    return this.http.get('https://jsonplaceholder.typicode.com/todos')
-     .map((res: Response) => res.json())
-     .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
-  }
+    list(): Observable<any> {
+        return this.http.get('https://jsonplaceholder.typicode.com/todos')
+            .map((res: Response) => res.json())
+            .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+    }
 
 }
