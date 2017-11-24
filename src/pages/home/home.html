@@ -1,14 +1,13 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>
+            N2B - Dev Challeng - ToDo List
+        </ion-title>
+    </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content padding *ngIf="todos">
+    <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+    <app-list-card *ngFor="let t of todos" [userid]="t.userId" [todo]="t.title" [completed]="t.completed">
+    </app-list-card>
 </ion-content>
